@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Scheduler.Model.Entities
+namespace Scheduler.Model
 {
     public enum ScheduleType
     {

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Scheduler.API.Core;
 using Scheduler.API.ViewModels;
 using Scheduler.Data.Abstract;
+using Scheduler.Model;
 using Scheduler.Model.Entities;
 using System;
 using System.Collections.Generic;

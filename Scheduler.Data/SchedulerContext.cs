@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Scheduler.Model;
 using Scheduler.Model.Entities;
 using System;
 using System.Collections.Generic;

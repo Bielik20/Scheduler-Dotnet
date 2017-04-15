@@ -23,18 +23,16 @@ namespace Scheduler.API
     public class Startup
     {
         private static string _applicationPath = string.Empty;
-        private static string _contentRootPath = string.Empty;
         public IConfigurationRoot Configuration { get; set; }
 
         public Startup(IHostingEnvironment env)
         {
             _applicationPath = env.WebRootPath;
-            _contentRootPath = env.ContentRootPath;
             // Setup configuration sources.
 
             var builder = new ConfigurationBuilder()
-                .SetBasePath(_contentRootPath)
-                .AddJsonFile("appsettings.json")
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
@@ -53,7 +51,7 @@ namespace Scheduler.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SchedulerContext>(options =>
-                options.UseSqlServer(Configuration["Data:SchedulerConnection:ConnectionString"],
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("Scheduler.Data")));
 
             // Repositories
